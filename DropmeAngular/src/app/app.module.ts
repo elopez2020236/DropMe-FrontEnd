@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthTokenInterceptor } from './auth-token.interceptor';
+import { UsuarioService } from './services/usuario.service';
+import { FormsModule } from '@angular/forms';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 @NgModule({
   declarations: [
@@ -16,9 +21,19 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ChartsModule,
   ],
-  providers: [],
+  providers: [
+    UsuarioService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
