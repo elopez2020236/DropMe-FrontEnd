@@ -11,13 +11,18 @@ import { AuthTokenInterceptor } from './auth-token.interceptor';
 import { UsuarioService } from './services/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from '@rinminase/ng-charts';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     InicioComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    SignUpComponent,
+    SignInComponent,
+
   ],
   imports: [
     BrowserModule,
