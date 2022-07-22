@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-
   public isAuthenticated: Observable<any>;
   public role: string;
 
