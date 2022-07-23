@@ -32,12 +32,12 @@ export class UsuarioService {
     this.roleUpdated = this.roleSubject.asObservable();
   }
 
- /* obtenerUsuario(token): Observable<any> {
+  obtenerUsuario(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/obtenerUsuarios', {
       headers: this.headersVariable,
     });
-  }*/
+  }
 
   login(usuario, obtenerToken = null): Observable<any> {
     if (obtenerToken != null) {
@@ -92,14 +92,6 @@ export class UsuarioService {
       headers: this.headersVariable,
     });
   }
-
-  /*usuarioLogeado(token): Observable<any> {
-    let headersToken = this.headersVariable.set('Authorization', token);
-    return this._http.get(this.url + '/obtenerUsuarioslog', {
-      headers: this.headersVariable,
-    });
-  }*/
-
 
 
   editarUsuario(modeloEvento: Usuario): Observable<any> {
