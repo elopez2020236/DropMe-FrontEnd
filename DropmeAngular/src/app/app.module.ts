@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ChartsModule } from '@rinminase/ng-charts';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ProductosComponent } from './components/productos/productos.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     UsuarioComponent,
     SignUpComponent,
     SignInComponent,
+    ProductosComponent,
 
   ],
   imports: [
