@@ -10,44 +10,44 @@
     </div>
 
 
-    <!-- Button Agregar Modal
-    <button *ngIf="role === 'Gerente'" type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#agregarHabitacion">
-    Agregar una nueva Habitación
-  </button> -->
+    <!-- Button Agregar Modal -->
+    <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+    Agregar un nuevo producto
+  </button>
 
-    <!-- "Cards" Obtener Habitaciones
+    <!-- "Cards" Obtener Habitaciones -->
     <div class="row gx-5">
 
-        <div class="col-lg-4 mb-5" *ngFor="let hab of habitacionModelGetIdH">
+        <div class="col-lg-4 mb-5" *ngFor="let prod of productosModelGet">
 
             <div class="card h-100 shadow border-0">
-                <img class="card-img-top" src="https://images.e-tsw.com/_lib/vimages/Cancun/Hotels/Hard-Rock-Hotel-Cancun/Gallery/a-Cancun-Hard-Rock-Deluxe-Gold-King-DLXDBLCA.jpg" alt="...">
+                <img class="card-img-top" src="https://unade.edu.mx/wp-content/uploads/2019/12/calidad.png" alt="...">
                 <div class="card-body p-4">
-                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{ hab.numeroHabitacion }}</div>
-                    <h5 class="card-title mb-3">{{ hab.tipoHabitacion }}</h5>
+                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{ prod.nombre }}</div>
+                    <h5 class="card-title mb-3">{{ prod.nombre}}</h5>
                     <p class="card-text mb-0">
-                        El número de habitación es {{ hab.numeroHabitacion }}.
+                        Su precio es de Q {{ prod.precio }}.00.
                     </p>
                     <p class="card-text mb-0">
-                        Su precio es de Q {{ hab.precio }}.00 por día, y se encuentra en el piso {{ hab.numeroPiso }}.
+                        Pertenece a la categoría de "{{ prod.categoria }}".
+                    </p>
+                    <p class="card-text mb-0">
+                        Id de factura {{ prod.idFactura }}, Id de Usuario {{ prod.idUsuario }}.
                     </p>
                 </div>
                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                     <div class="d-flex align-items-end justify-content-between">
-                        <button *ngIf="role === 'Gerente'" type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" (click)="getHabitacionId(hab._id)">Editar</button>
-                        <button *ngIf="role === 'Usuario'" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getHabitacionId(hab._id)">
-                          Reserva
-                        </button>
-                        <button *ngIf="role === 'Gerente'" type="button" class="btn btn-danger" (click)="deleteHabitacion(hab._id)">Eliminar</button>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" (click)="getProductosId(prod._id)">Editar</button>
+                        <button type="button" class="btn btn-danger" (click)="deleteProducto(prod._id)">Eliminar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>   -->
+</div>
 
-    <!-- "Modal" Agregar Habitacion
-<div class="modal fade" id="agregarHabitacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- "Modal" Agregar Habitacion -->
+<div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,41 +58,44 @@
 
                 <form>
                     <div class="mg-3">
-                        <label for="inputTipoHabitacion" class="form-label">Tipo de Habitación</label>
-                        <input type="text" id="inputTipoHabitacion" class="form-control" name="tipoHabitacion" #tipo="ngModel" [(ngModel)]="habitacionModelPost.tipoHabitacion">
+                        <label for="inputNombre" class="form-label">Nombre</label>
+                        <input type="text" id="inputNombre" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="productosModelPost.nombre">
                     </div>
                     <div class="mg-3">
-                        <label for="inputNumHabitacion" class="form-label">Número de Habitación</label>
-                        <input type="text" id="inputNumHabitacion" class="form-control" name="numeroHabitacion" #numeroHabitacion="ngModel" [(ngModel)]="habitacionModelPost.numeroHabitacion">
+                        <label for="inputCategoria" class="form-label">Categoría</label>
+                        <input type="text" id="inputCategoria" class="form-control" name="categoria" #categoria="ngModel" [(ngModel)]="productosModelPost.categoria">
                     </div>
                     <div class=" mg-3 ">
-                        <label for="inputNumPiso " class="form-label ">Número de Piso</label>
-                        <input type="text " id="inputNumPiso " class="form-control " name="numeroPiso" #numeroPiso="ngModel" [(ngModel)]="habitacionModelPost.numeroPiso">
-                    </div>
-                    <div class="mg-3 ">
                         <label for="inputPrecio " class="form-label ">Precio</label>
-                        <input type="text " id="inputPrecio " class="form-control " name="precio" #precio="ngModel" [(ngModel)]="habitacionModelPost.precio">
+                        <input type="text " id="inputPrecio" class="form-control " name="precio" #precio="ngModel" [(ngModel)]="productosModelPost.precio">
                     </div>
                     <div class="mg-3 ">
-                        <label for="inputnumeroDias " class="form-label ">Numero de Días</label>
-                        <input type="text " id="inputnumeroDias " class="form-control " name="numeroDias" #numeroDias="ngModel" [(ngModel)]="habitacionModelPost.numeroDias">
+                        <label for="inputFotos" class="form-label ">Foto Producto</label>
+                        <input type="text " id="inputFotos" class="form-control " name="fotos" #fotos="ngModel" [(ngModel)]="productosModelPost.fotos">
                     </div>
-
+                    <div class="mg-3 ">
+                        <label for="inputFactura " class="form-label ">Id Factura</label>
+                        <input type="text " id="inputFactura" class="form-control " name="idFactura" #idFactura="ngModel" [(ngModel)]="productosModelPost.idFactura">
+                    </div>
+                    <div class="mg-3 ">
+                        <label for="inputUsuario" class="form-label ">Id Usuario</label>
+                        <input type="text " id="inputUsuario" class="form-control " name="idUsuario" #idUsuario="ngModel" [(ngModel)]="productosModelPost.idUsuario">
+                    </div>
                 </form>
 
             </div>
             <div class="modal-footer ">
                 <button type="button " class="btn btn-secondary " data-bs-dismiss="modal">Cancelar</button>
-                <button type="button " class="btn btn-primary " data-bs-dismiss="modal" (click)="postHabitaciones()">Agregar</button>
+                <button type="button " class="btn btn-primary " data-bs-dismiss="modal" (click)="postProductos()">Agregar</button>
             </div>
         </div>
     </div>
 </div>
 
--->
 
 
-    <!-- "OffCanvas" Editar Habitacion
+
+<!-- "OffCanvas" Editar Habitacion
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Habitación</h5>

@@ -38,7 +38,7 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProductos(this.token).subscribe(
       (response) => {
         console.log(response.productos);
-        this.productosModelGet = response.mensaje;
+        this.productosModelGet = response.productos;
       },
       (error) => {
         console.log(<any>error);
@@ -76,9 +76,9 @@ export class ProductosComponent implements OnInit {
 
    //Funcion Agregar Producto
    postProductos(){
-    this._productosService.agregarProductos(this.productosModelPost).subscribe (           //Nos Suscribimos
+    this._productosService.agregarProductos(this.productosModelPost).subscribe (
       (response) => {
-        console.log(response)
+        console.log(response);
         this.getProductos();
 
         this.productosModelPost.nombre = '';
@@ -99,15 +99,15 @@ export class ProductosComponent implements OnInit {
 
       },
       (error) => {
-        console.log(<any>error);
+       console.log(<any>error);
 
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: error.error.mensaje,
-          showConfirmButton: false,
-          timer: 1500
-        })
+       Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: error.error.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+       })
 
       }
     )
