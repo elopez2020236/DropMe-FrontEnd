@@ -17,7 +17,7 @@ export class ProductosService {
   obtenerProductos(token) : Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
 
-    return this._http.get(this.url + '/productos', { headers: headersToken });
+    return this._http.get(this.url + '/obtenerProductos', { headers: headersToken });
   }
 
 
@@ -30,7 +30,7 @@ export class ProductosService {
   agregarProductos(modeloProductos: Productos) : Observable<any> {
     let parametros = JSON.stringify(modeloProductos) //Convertir el valor de javascript en json
 
-    return this._http.post(this.url + '/agregarProducto', parametros, { headers: this.headersVariable });
+    return this._http.post(this.url + '/addProducto', parametros, { headers: this.headersVariable });
 
   }
 
