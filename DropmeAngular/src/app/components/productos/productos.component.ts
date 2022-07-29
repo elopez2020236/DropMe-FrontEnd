@@ -23,8 +23,8 @@ export class ProductosComponent implements OnInit {
     private _usuarioService: UsuarioService
 
   ) {
-      this.productosModelPost = new Productos('','','','',[],{},{});
-      this.productosModelGetId = new Productos('','','','',[],{},{});
+      this.productosModelPost = new Productos('','','','',[],[{}],{});
+      this.productosModelGetId = new Productos('','','','',[],[{}],{});
       this.token = this._usuarioService.getToken();
    }
 
@@ -80,6 +80,7 @@ export class ProductosComponent implements OnInit {
       (response) => {
         console.log(response);
         this.getProductos();
+        console.log(this.getProductos);
 
         this.productosModelPost.nombre = '';
         this.productosModelPost.categoria = '';
