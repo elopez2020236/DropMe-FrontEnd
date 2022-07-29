@@ -51,7 +51,7 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProductoId(idProducto).subscribe (
       (response) => {
         console.log(response);
-        this.productosModelGetId = response.mensaje;
+        this.productosModelGetId = response.productoUpdates;
       },
       (error) => {
 
@@ -85,8 +85,8 @@ export class ProductosComponent implements OnInit {
         this.productosModelPost.categoria = '';
         this.productosModelPost.precio = '';
         this.productosModelPost.fotos = [];
-        this.productosModelPost.idFactura = {};
-        this.productosModelPost.idUsuario = {};
+        //this.productosModelPost.idFactura = {};
+        //this.productosModelPost.idUsuario = {};
 
         //Alert
         Swal.fire({
