@@ -5,7 +5,7 @@ export class Productos {
     public categoria: String,
     public precio: String,
     public fotos: [],
-    public idFactura: {},
+    public idFactura: [{}],
     public idUsuario: {}
   ){}
 }
