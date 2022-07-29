@@ -31,13 +31,14 @@
                     <p class="card-text mb-0">
                         Pertenece a la categoría de "{{ prod.categoria }}".
                     </p>
-                    <p class="card-text mb-0">
+                    <!--   <p class="card-text mb-0">
                         Id de factura {{ prod.idFactura }}, Id de Usuario {{ prod.idUsuario }}.
-                    </p>
+                    </p>  -->
                 </div>
                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                     <div class="d-flex align-items-end justify-content-between">
                         <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" (click)="getProductosId(prod._id)">Editar</button>
+                        <button type="button" class="btn btn-success" [routerLink]="['/detalleProducto', prod._id]">Ver</button>
                         <button type="button" class="btn btn-danger" (click)="deleteProducto(prod._id)">Eliminar</button>
                     </div>
                 </div>
@@ -51,7 +52,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Habitacion</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar un Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -73,20 +74,20 @@
                         <label for="inputFotos" class="form-label ">Foto Producto</label>
                         <input type="text " id="inputFotos" class="form-control " name="fotos" #fotos="ngModel" [(ngModel)]="productosModelPost.fotos">
                     </div>
-                    <div class="mg-3 ">
+                    <!--        <div class="mg-3 ">
                         <label for="inputFactura " class="form-label ">Id Factura</label>
                         <input type="text " id="inputFactura" class="form-control " name="idFactura" #idFactura="ngModel" [(ngModel)]="productosModelPost.idFactura">
                     </div>
                     <div class="mg-3 ">
                         <label for="inputUsuario" class="form-label ">Id Usuario</label>
                         <input type="text " id="inputUsuario" class="form-control " name="idUsuario" #idUsuario="ngModel" [(ngModel)]="productosModelPost.idUsuario">
-                    </div>
+                    </div>  -->
                 </form>
 
             </div>
             <div class="modal-footer ">
                 <button type="button " class="btn btn-secondary " data-bs-dismiss="modal">Cancelar</button>
-                <button type="button " class="btn btn-primary " data-bs-dismiss="modal" (click)="postProductos()">Agregar</button>
+                <button type="button" class="btn btn-primary " data-bs-dismiss="modal" (click)="postProductos()">Agregar producto</button>
             </div>
         </div>
     </div>
@@ -95,33 +96,32 @@
 
 
 
-<!-- "OffCanvas" Editar Habitacion
+<!-- "OffCanvas" Editar Habitacion -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Habitación</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <form>
-            <div class="mb-3">
-                <label for="inputTipoHabitacion" class="form-label">Tipo de Habitación</label>
-                <input type="text" class="form-control" id="inputTipoHabitacion" name="tipoHabitacion" #tipo="ngModel" [(ngModel)]="habitacionModelGetId.tipoHabitacion">
+            <div class="mg-3">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="productosModelGetId.nombre">
             </div>
             <div class="mg-3">
-                <label for="inputNumHabitacion" class="form-label">Número de Habitación</label>
-                <input type="text" class="form-control" id="inputNumHabitacion" name="numeroHabitacion" #numeroHabitacion="ngModel" [(ngModel)]="habitacionModelGetId.numeroHabitacion">
+                <label for="inputCategoria" class="form-label">Categoría</label>
+                <input type="text" class="form-control" id="inputCategoria" name="categoria" #categoria="ngModel" [(ngModel)]="productosModelGetId.categoria">
             </div>
             <div class=" mg-3 ">
-                <label for="inputNumPiso " class="form-label ">Número de Piso</label>
-                <input type="text" class="form-control" id="inputNumPiso" name="numeroPiso" #numeroPiso="ngModel" [(ngModel)]="habitacionModelGetId.numeroPiso">
+                <label for="inputPrecio " class="form-label">Precio</label>
+                <input type="text " class="form-control" id="inputPrecio" name="precio" #precio="ngModel" [(ngModel)]="productosModelGetId.precio">
             </div>
             <div class="mg-3 ">
-                <label for="inputPrecio" class="form-label ">Precio</label>
-                <input type="text" class="form-control" id="inputPrecio" name="precio" #precio="ngModel" [(ngModel)]="habitacionModelGetId.precio">
+                <label for="inputFotos" class="form-label ">Foto Producto</label>
+                <input type="text " class="form-control" id="inputFotos" name="fotos" #fotos="ngModel" [(ngModel)]="productosModelGetId.fotos">
             </div>
 
-            <button type="submit" class="btn btn-success" (click)="putHabitacion()" data-bs-dismiss="offcanvas">Guardar Cambios</button>
+            <button type="submit" class="btn btn-success" (click)="putProducto()" data-bs-dismiss="offcanvas">Guardar Cambios</button>
         </form>
     </div>
 </div>
--->

@@ -14,6 +14,7 @@ import { ChartsModule } from '@rinminase/ng-charts';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductosComponent } from './components/productos/productos.component';
     SignUpComponent,
     SignInComponent,
     ProductosComponent,
+    DetalleProductoComponent,
 
   ],
   imports: [
