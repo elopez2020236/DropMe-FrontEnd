@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Productos } from 'src/app/models/productos.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
+import { CategoriaService } from 'src/app/services/categoria.service';
 import Swal from 'sweetalert2';
 
 @Component({
