@@ -50,7 +50,7 @@ export class ProductosComponent implements OnInit {
     this._productosService.obtenerProductoId(idProducto).subscribe (
       (response) => {
         console.log(response);
-        this.productosModelGetId = response.productoUpdates;
+        this.productosModelGetId = response.producFined;
       },
       (error) => {
 
