@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Productos } from 'src/app/models/productos.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
-import { CategoriaService } from 'src/app/services/categoria.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -30,7 +29,6 @@ export class ProductosComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('DropMe');
     this.getProductos();
   }
 
@@ -38,8 +36,8 @@ export class ProductosComponent implements OnInit {
   getProductos() {
     this._productosService.obtenerProductos(this.token).subscribe(
       (response) => {
-        console.log(response.productos);
         this.productosModelGet = response.productos;
+        console.log(response);
       },
       (error) => {
         console.log(<any>error);
@@ -77,18 +75,17 @@ export class ProductosComponent implements OnInit {
 
    //Funcion Agregar Producto
    postProductos(){
-    this._productosService.agregarProductos(this.productosModelPost).subscribe (
+    this._productosService.agregarProductos(this.productosModelPost, this.token).subscribe (
       (response) => {
         console.log(response);
         this.getProductos();
-        console.log(this.getProductos);
-
         this.productosModelPost.nombre = '';
         this.productosModelPost.categoria = '';
         this.productosModelPost.precio = '';
         this.productosModelPost.fotos = [];
         //this.productosModelPost.idFactura = {};
         //this.productosModelPost.idUsuario = {};
+
 
         //Alert
         Swal.fire({
@@ -101,7 +98,6 @@ export class ProductosComponent implements OnInit {
 
       },
       (error) => {
-       console.log(<any>error);
 
        Swal.fire({
         position: 'top-end',

@@ -11,13 +11,13 @@ export class ProductosService {
   public url: String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
 
+  public token;
+
   constructor(public _http: HttpClient) { }
 
   //Funcion Obtener productos
-  obtenerProductos(token) : Observable<any> {
-    let headersToken = this.headersVariable.set('Authorization', token);
-
-    return this._http.get(this.url + '/obtenerProductos', { headers: headersToken });
+  obtenerProductos(token?) : Observable<any> {
+    return this._http.get(this.url + '/obtenerProductos', { headers: this.headersVariable });
   }
 
 
@@ -27,10 +27,11 @@ export class ProductosService {
   }
 
   //Function Agregar producto
-  agregarProductos(modeloProductos: Productos) : Observable<any> {
-    let parametros = JSON.stringify(modeloProductos) //Convertir el valor de javascript en json
+  agregarProductos(modeloProductos: Productos, token) : Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modeloProductos) 
 
-    return this._http.post(this.url + '/addProducto', parametros, { headers: this.headersVariable });
+    return this._http.put(this.url + '/addProducto', parametros, { headers: headersToken, });
 
   }
 
